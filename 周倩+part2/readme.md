@@ -4,7 +4,7 @@
 
 ### 后端
 1. 依赖注入，并进行各项配置（见pom.xml文件以及application.properties文件）。
-2. 编写实体类User、dao接口，创建表单，编写控制器用于显示页面和数据交互（CUD）。
+2. 编写实体类User、dao接口，创建表单，编写控制器用于显示页面和数据交互（CRUD）。
 3. 编写service用于更新用户数据
 4. 配置Druid以及logback，编写logging-config.xml配置文件
 
