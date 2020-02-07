@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+    <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+</head>
+<script>
+    function save() {
+        //var id=$("#id").val();
+        var name=$("#name").val();
+        var trueName=$("#trueName").val();
+        var age=$("#age").val();
+        var score=$("#score").val();
+
+        $.post("/admin/add",{name:name,trueName:trueName,age:age,score:score},
+            function (result){
+                if(result.success){
+                    alert(result.msg);
+                }else{
+                    alert(result.msg);
+                }
+            },'json');
+    }
+</script>
+<body>
+<div>
+    <a href="/houtai/manage">返回</a>
+</div>
+<table>
+    <!--<tr><td>ID</td><td><input type="text" id="id" /></td></tr>-->
+    <tr><td>用户名</td><td><input type="text" id="name" /></td></tr>
+    <tr><td>真实姓名</td><td><input type="text" id="trueName" /></td></tr>
+    <tr><td>分数</td><td><input type="text" id="score" /></td></tr>
+    <tr><td>年龄</td><td><input type="text" id="age" /></td></tr>
+</table>
+<input type="button" onclick="save()" value="提交"/>
+</body>
+</html>

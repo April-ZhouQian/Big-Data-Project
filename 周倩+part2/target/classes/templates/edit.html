@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+    <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+</head>
+<script>
+    function save(){
+    //var id=$("#id").val();
+    var name=$("#name").val();
+    var trueName=$("#trueName").val();
+    var age=$("#age").val();
+    var score=$("#score").val();
+
+
+    $.post("/admin/update",{id:[[${user.id}]],name:name,trueName:trueName,age:age,score:score},
+        function (result){
+            if(result.success){
+                alert(result.msg);
+            }else{
+                alert(result.msg);
+            }
+        },'json');
+    }
+</script>
+<body>
+<div>
+    <a href="/houtai/manage">返回</a>
+</div>
+
+<table>
+    <!--<tr><td>ID</td><td><input th:value="${user.id}" type="text" id="id" /></td></tr> -->
+    <tr><td>用户名</td><td><input th:value="${user.name}" type="text" id="name" /></td></tr>
+    <tr><td>真实姓名</td><td><input th:value="${user.trueName}" type="text" id="trueName" /></td></tr>
+    <tr><td>分数</td><td><input th:value="${user.score}" type="text" id="score" /></td></tr>
+    <tr><td>年龄</td><td><input th:value="${user.age}" type="text" id="age" /></td></tr>
+</table>
+<input type="button" onclick="save()" value="提交修改" />
+</body>
+</html>
